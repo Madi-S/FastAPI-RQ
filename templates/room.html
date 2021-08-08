@@ -5,9 +5,23 @@
 {% endblock %}
 
 {% block content_title %}
-Chat Room #{{ room_id }}
+{{ room_id }}
 {% endblock %}
 
 {% block content %}
+<h1>Welcome to {{ room_id }}</h1>
+
+<ul class="collection with-header">
+    <li class="collection-header">
+        <h4>First Names</h4>
+    </li>
+    {% for message in messages %}
+    <li class="collection-item">
+        <div>{{ message.author }}: {{ message.text }}
+            <a class="secondary-content"><i class="material-icons">send</i></a></div>
+    </li>
+
+    {% endfor %}
+</ul>
 
 {% endblock %}
