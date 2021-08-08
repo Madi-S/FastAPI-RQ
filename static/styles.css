@@ -11,3 +11,7 @@ main {
 h1 {
     margin: 20px !important;
 }
+
+.message-input {
+    margin: 10px 20px;
+}
