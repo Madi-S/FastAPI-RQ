@@ -1,8 +1,8 @@
 version: '3.6'
 
 services:
-    myproj_redis:
-        container_name: myproj_redis
+    redis:
+        container_name: redis
         hostname: redis
         image: redis:latest
         command: --port 6379
@@ -12,8 +12,8 @@ services:
             - "6379"
         restart: always
 
-    myproj_api:
-        container_name: my_api
+    web:
+        container_name: web
         build:
             context: ./
             dockerfile: ./Dockerfile
@@ -23,11 +23,11 @@ services:
         volumes:
             - ./:/home/myproj
         links:
-            - myproj_redis
-        command: uvicorn api:app --host 0.0.0.0 --port 5057 --reload
+            - redis
+        command: uvicorn main:app --host 0.0.0.0 --port 5057 --reload
 
-    myproj_worker:
-        container_name: my_worker
+    worker:
+        container_name: worker
         build:
             context: ./
             dockerfile: ./Dockerfile
@@ -35,5 +35,5 @@ services:
         volumes:
             - ./:/home/myproj
         links:
-            - myproj_redis
-        command: rq worker --url redis://myproj_redis:6379 my_queue
+            - redis
+        command: rq worker --url redis://redis:6379 my_queue
