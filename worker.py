@@ -1,8 +1,11 @@
+import requests
 from redis import Redis
 from rq import Queue
-
+from rq_scheduler import Scheduler
+from datetime import datetime
 from time import sleep
 
+from config import API_URL
 
 REDIS_HOST = 'redis'
 REDIS_PORT = 6379
@@ -10,7 +13,17 @@ QUEUE_NAME = 'my_queue'
 
 redis_conn = Redis(host=REDIS_HOST, port=REDIS_PORT)
 queue = Queue(QUEUE_NAME, connection=redis_conn)
+scheduler = Scheduler(connection=redis_conn)
 
+
+def greet(name: str):
+    print(f'Greetings, {name}!')
+
+
+def request_test():
+    response = requests.get(API_URL + '/test')
+    print(response)
+    
 
 def sleep_task(seconds: int = 5):
     print('Starting the task ...')
@@ -18,3 +31,16 @@ def sleep_task(seconds: int = 5):
 
     print('Finished the task ...')
     return {'status': 'completed'}
+
+scheduler.schedule(
+    scheduled_time=datetime.utcnow(),
+    func=greet,
+    args=['Romelu Lukaku'],
+    interval=10,
+)
+
+scheduler.schedule(
+    scheduled_time=datetime.utcnow(),
+    func=request_test,
+    interval=10,
+)

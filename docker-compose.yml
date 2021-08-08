@@ -36,4 +36,4 @@ services:
             - ./:/home/myproj
         links:
             - redis
-        command: rq worker --url redis://redis:6379 my_queue
+        command: rq worker --with-scheduler --url redis://redis:6379 my_queue
