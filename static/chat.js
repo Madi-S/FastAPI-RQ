@@ -9,7 +9,6 @@ sendMessageBtn.addEventListener('click', sendMessage)
 function sendMessage(event) {
     const message = generateJSONMessage()
     ws.send(message)
-    // appendMessage(message, 'You')
     messageInput.value = ''
     event.preventDefault()
 }
@@ -36,4 +35,3 @@ ws.onmessage = function (event) {
     const message = JSON.parse(JSON.parse(event.data))
     appendMessage(message)
 }
-
