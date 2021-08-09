@@ -13,5 +13,10 @@ app.include_router(tasks)
 
 @app.get('/hello', tags=['test'])
 async def test():
-    '''Test endpoint'''
+    '''Test hello endpoint'''
     return {'hello': 'world'}
+
+@app.get('/', tags=['test'])
+async def index():
+    '''Test index endpoint'''
+    return {'foo': 'bar'}

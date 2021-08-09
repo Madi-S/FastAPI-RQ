@@ -1,8 +1,11 @@
 import json
 from typing import List
+from datetime import timedelta
 from fastapi import WebSocket
 
-from worker import redis
+from worker import redis, queue, sleep_task
+
+OPTIMAL_TASK_DELAY_TIME_IN_SECONDS = 7
 
 
 class ChatRoom:
@@ -72,3 +75,9 @@ class ConnectionManager:
     async def broadcast_json(self, message: dict):
         for connection in self.active_connections:
             await connection.send_json(json.dumps(message))
+
+
+def create_n_tasks(n: int = 10):
+    t_delta = timedelta(seconds=OPTIMAL_TASK_DELAY_TIME_IN_SECONDS)
+    for _ in range(n):
+        queue.enqueue_in(t_delta, sleep_task, 10)
