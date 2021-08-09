@@ -11,8 +11,6 @@ from worker import redis
 class ChatRoom:
     def __init__(self, id):
         self.id = id
-        self.clear()
-        self.generate_random_messages()
 
     def save_message(self, message: dict):
         '''Message must be a dictionary with text and author fields'''
