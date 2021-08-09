@@ -35,7 +35,7 @@ async def room(room_id: str, request: Request):
     })
 
 
-@chat.websocket('/ws/{room_id}/{client_id}', tags=['websocket', 'chat'])
+@chat.websocket('/ws/{room_id}/{client_id}')
 async def websocket_endpoint(websocket: WebSocket, room_id: str, client_id: str):
     chat_room = get_chat_room_or_raise_404(room_id)
 
