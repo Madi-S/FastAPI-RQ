@@ -6,7 +6,6 @@ from routers.tasks import tasks
 
 
 app = FastAPI()
-app.mount('/static', StaticFiles(directory='static'), name='static')
 app.include_router(chat)
 app.include_router(tasks)
 
@@ -20,3 +19,7 @@ async def test():
 async def index():
     '''Test index endpoint'''
     return {'foo': 'bar'}
+
+if __name__ == '__main__':
+    app.mount('/static', StaticFiles(directory='static'), name='static')
+    

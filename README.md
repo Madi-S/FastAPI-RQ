@@ -4,6 +4,8 @@
 
 `docker-compose up --build`
 
+#### Go to 127.0.0.1:5057
+
 ### Run tests
 
-`docker-compose exec web python -m pytest -k "test_mock_task"`
+`docker-compose exec web python -m pytest`

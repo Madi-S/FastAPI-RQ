@@ -25,7 +25,7 @@ def request_test():
     print(response)
 
 
-def sleep_task(seconds: int = 5):
+def sleep_task(seconds: int = 10):
     print('Starting the task ...')
     sleep(seconds)
 
