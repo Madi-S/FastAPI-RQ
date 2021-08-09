@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h1 {
+    margin: 20px !important;
+}
+
+.message-input {
+    margin: 10px 20px;
+}

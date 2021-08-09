@@ -11,3 +11,5 @@ uvloop==0.15.3
 websockets==9.1
 rq-scheduler==0.11.0
 requests==2.26.0
+jinja2==3.0.1
+aiofiles==0.7.0

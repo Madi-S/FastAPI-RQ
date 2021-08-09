@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %} {% endblock %} | EazyAPI
+    </title>
+
+    <!-- Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Materialize icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo"><i class="material-icons">chat_bubble</i>
+
+                    {% block content_title %}
+                    {% endblock %}
+
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+                    <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+                    <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+                    <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Consequatur perferendis assumenda delectus numquam aperiam facilis ratione illo itaque officiis
+                        odio!</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#https://github.com/Madi-S">GitHub</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#https://github.com/Madi-S">GitHub</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#https://github.com/Madi-S">GitHub</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#https://github.com/Madi-S">GitHub</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#https://github.com/Madi-S">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2021 Copyright All Rights Reserved.
+                <a class="grey-text text-lighten-4 right" href="#https://github.com/Madi-S">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+
+</html>

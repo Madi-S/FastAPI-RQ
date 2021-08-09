@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Chat Rooms
+{% endblock %}
+
+{% block content_title %}
+Rooms
+{% endblock %}
+
+{% block content %}
+<h1>Available Chat Rooms</h1>
+<div>
+    {% for endpoint in chat_rooms_endpoints %}
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card teal lighten-2">
+                <div class="card-content white-text">
+                    <span class="card-title">Room {{ endpoint }}</span>
+                </div>
+                <div class="card-action">
+                    <a href="{{ request.path + '/' + endpoint }}">join the room</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
