@@ -78,6 +78,10 @@ class ConnectionManager:
 
 
 def create_n_tasks(n: int = 10):
-    t_delta = timedelta(seconds=OPTIMAL_TASK_DELAY_TIME_IN_SECONDS)
     for _ in range(n):
-        queue.enqueue_in(t_delta, sleep_task)
+        queue.enqueue(sleep_task, 3)
+
+
+def clear_queue():
+    queue.empty()
+    

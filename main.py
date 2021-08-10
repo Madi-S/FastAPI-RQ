@@ -6,7 +6,7 @@ from routers.tasks import tasks
 
 
 app = FastAPI()
-app.mount('/static', StaticFiles(directory='static'), name='static')
+# app.mount('/static', StaticFiles(directory='static'), name='static')
 app.include_router(chat)
 app.include_router(tasks)
 

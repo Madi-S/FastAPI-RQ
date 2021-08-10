@@ -16,11 +16,11 @@ redis = Redis(host=REDIS_HOST, port=REDIS_PORT)
 queue = Queue(QUEUE_NAME, connection=redis)
 
 
-def greet(name: str):
+def greet_task(name: str):
     print(f'Greetings, {name}!')
 
 
-def request_test():
+def request_task():
     response = requests.get(API_URL + '/test')
     print(response)
 
