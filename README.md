@@ -4,7 +4,9 @@
 
 `docker-compose up --build`
 
-#### Go to 127.0.0.1:5057
+#### Go to 127.0.0.1:5057 (main app)
+
+#### Go to 127.0.0.1:5057/subapi (sub app)
 
 ### Run tests
 
