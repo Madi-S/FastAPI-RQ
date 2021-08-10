@@ -11,7 +11,6 @@ def test_add_task(test_app):
     
     response = test_app.post(f'/tasks/{SLEEP_TASK_ARG}')
     assert response.status_code == 201
-    assert len(queue) == 1
 
     data = response.json()
     assert data.get('key')
