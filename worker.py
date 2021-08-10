@@ -7,6 +7,7 @@ from time import sleep
 
 from config import API_URL
 
+
 REDIS_HOST = 'redis'
 REDIS_PORT = 6379
 QUEUE_NAME = 'my_queue'
@@ -15,16 +16,16 @@ redis = Redis(host=REDIS_HOST, port=REDIS_PORT)
 queue = Queue(QUEUE_NAME, connection=redis)
 
 
-def greet(name: str):
+def greet_task(name: str):
     print(f'Greetings, {name}!')
 
 
-def request_test():
+def request_task():
     response = requests.get(API_URL + '/test')
     print(response)
-    
 
-def sleep_task(seconds: int = 5):
+
+def sleep_task(seconds: int = 10):
     print('Starting the task ...')
     sleep(seconds)
 
