@@ -2,7 +2,7 @@ from utils import create_n_tasks, clear_queue
 from worker import queue
 
 
-SLEEP_TASK_ARG = 3
+SLEEP_TASK_ARG = 100
 QUEUE_SIZE = 10
 
 
@@ -11,11 +11,11 @@ def test_add_task(test_app):
     
     response = test_app.post(f'/tasks/{SLEEP_TASK_ARG}')
     assert response.status_code == 201
+    assert len(queue) == 1
 
     data = response.json()
     assert data.get('key')
     assert data.get('info')
-    assert len(queue) == 1
 
 
 def test_queue_size(test_app):
