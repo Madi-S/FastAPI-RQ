@@ -2,7 +2,9 @@ import os
 import pathlib
 import pytest
 
-print('HEELO WORLD')
+
+print('GOING TO RUNNING ALL TESTS')
+
 os.chdir(pathlib.Path.cwd() / 'tests')
 
 pytest.main()

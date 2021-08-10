@@ -8,4 +8,11 @@
 
 ### Run tests
 
+Before running tests, you need to comment line #9 in main.py
+For some weird reasons, it throws an error when running tests
+
 `docker-compose exec web python -m pytest`
+
+OR
+
+`docker-compose exec web python run_tests.py`
