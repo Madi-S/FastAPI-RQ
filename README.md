@@ -10,7 +10,9 @@
 
 ### Run tests
 
-Before running tests, you need to comment line #9 in main.py
+Before running tests, you need to comment line #24 in main.py:
+
+`app.mount('/static', StaticFiles(directory='static'), name='static')`
 
 For some weird reasons, it throws an error when running the tests
 

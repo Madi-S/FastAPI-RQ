@@ -1,8 +1,7 @@
 import requests
 from redis import Redis
 from rq import Queue
-from rq_scheduler import Scheduler
-from datetime import datetime
+
 from time import sleep
 
 from config import API_URL
@@ -32,17 +31,27 @@ def sleep_task(seconds: int = 10):
     print('Finished the task ...')
     return {'status': 'completed'}
 
-# scheduler = Scheduler(connection=redis)
 
-# scheduler.schedule(
-#     scheduled_time=datetime.utcnow(),
-#     func=greet,
-#     args=['Romelu Lukaku'],
-#     interval=10,
-# )
+'''
+RQ Scheduler is flawed, so it is better to pass on this
 
-# scheduler.schedule(
-#     scheduled_time=datetime.utcnow(),
-#     func=request_test,
-#     interval=10,
-# )
+from rq_scheduler import Scheduler
+from datetime import datetime
+
+
+scheduler = Scheduler(connection=redis)
+
+scheduler.schedule(
+    scheduled_time=datetime.utcnow(),
+    func=greet,
+    args=['Romelu Lukaku'],
+    interval=10,
+)
+
+scheduler.schedule(
+    scheduled_time=datetime.utcnow(),
+    func=request_test,
+    interval=10,
+)
+
+'''
