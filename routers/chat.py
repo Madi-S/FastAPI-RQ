@@ -2,6 +2,7 @@ from fastapi import APIRouter, Request, HTTPException, WebSocket, WebSocketDisco
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
+from main import logger
 from utils import ChatRoomsRegistry, ConnectionManager
 
 
@@ -14,6 +15,7 @@ templates = Jinja2Templates(directory='templates')
 
 
 @chat.get('/rooms', response_class=HTMLResponse, tags=['chat'])
+@logger.catch
 async def rooms(request: Request):
     chat_rooms_endpoints = chat_rooms_registry.get_all_endpoints()
 
@@ -24,6 +26,7 @@ async def rooms(request: Request):
 
 
 @chat.get('/rooms/{room_id}', response_class=HTMLResponse, tags=['chat'])
+@logger.catch
 async def room(room_id: str, request: Request):
     chat_room = get_chat_room_or_raise_404(room_id)
     messages = chat_room.get_messages()
@@ -36,7 +39,9 @@ async def room(room_id: str, request: Request):
 
 
 @chat.websocket('/ws/{room_id}/{client_id}')
+@logger.catch
 async def websocket_endpoint(websocket: WebSocket, room_id: str, client_id: str):
+    logger.debug('New websocket connection {} to a room {}', websocket.__repr__(), room_id)
     chat_room = get_chat_room_or_raise_404(room_id)
 
     await conn_manager.broadcast_json({
