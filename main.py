@@ -12,17 +12,21 @@ from routers.tasks import tasks
 from routers.graphql import Query
 
 
+def remove_all_existing_handlers():
+    logger.remove()
+
+remove_all_existing_handlers()
 logger.add('app.log', level='WARNING', backtrace=True, diagnose=True)
 logger.add(
     sys.stderr,
-    format='<red>{level}</red> | {time: HH:mm:ss MM/DD} | <blue>{message}</blue>',
+    format='<white>{level}</white> | {time: HH:mm:ss MM/DD} | <blue>{message}</blue>',
     colorize=True
 )
 
 logger.debug('Starting the main application ...')
 
 app = FastAPI()
-app.mount('/static', StaticFiles(directory='static'), name='static')
+# app.mount('/static', StaticFiles(directory='static'), name='static')
 app.include_router(chat)
 app.include_router(tasks)
 app.add_route('/graphql', GraphQLApp(schema=Schema(query=Query)))

@@ -10,7 +10,7 @@
 
 ### Run tests
 
-Before running tests, you need to comment line #24 in main.py:
+Before running tests, you need to comment line #29 in main.py:
 
 `app.mount('/static', StaticFiles(directory='static'), name='static')`
 
@@ -18,8 +18,9 @@ For some weird reasons, it throws an error when running the tests
 
 Also, make sure the docker container is running (the command above)
 
-`docker-compose exec web python -m pytest`
+`docker-compose exec web python run_tests.py`
 
 OR
 
-`docker-compose exec web python run_tests.py`
+`docker-compose exec web python -m pytest`
+
