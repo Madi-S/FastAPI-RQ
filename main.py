@@ -27,7 +27,7 @@ logger.add(
 logger.debug('Starting the main application ...')
 
 app = FastAPI()
-# app.mount('/static', StaticFiles(directory='static'), name='static')
+app.mount('/static', StaticFiles(directory='static'), name='static')
 app.include_router(chat)
 app.include_router(tasks)
 app.add_route('/graphql', GraphQLApp(schema=Schema(query=Query)))
