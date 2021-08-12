@@ -85,3 +85,9 @@ def create_n_tasks(n: int = 10):
 def clear_queue():
     queue.empty()
     
+    
+def assert_response_code_and_json(response, expected_code, expected_json):
+    assert response
+    assert response.status_code == expected_code
+    assert response.json() == expected_json
+    

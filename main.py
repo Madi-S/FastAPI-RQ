@@ -15,6 +15,7 @@ from routers.graphql import Query
 def remove_all_existing_handlers():
     logger.remove()
 
+
 remove_all_existing_handlers()
 logger.add('app.log', level='WARNING', backtrace=True, diagnose=True)
 logger.add(
@@ -31,7 +32,8 @@ app.include_router(chat)
 app.include_router(tasks)
 app.add_route('/graphql', GraphQLApp(schema=Schema(query=Query)))
 
-logger.debug('Successful start: routes and graphql included, static directory mounted.')
+logger.debug(
+    'Successful start: routes and graphql included, static directory mounted.')
 
 subapi = FastAPI()
 logger.debug('Starting subapi ...')

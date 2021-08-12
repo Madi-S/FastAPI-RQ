@@ -1,12 +1,13 @@
+from utils import assert_response_code_and_json
 
 
 def test_index(test_app):
     response = test_app.get('/subapi/')
-    assert response.status_code == 200
-    assert response.json() == {'foo': 'bar'}
+    expected_json = {'foo': 'bar'}
+    assert_response_code_and_json(response, 200, expected_json)
 
 
 def test_hello(test_app):
     response = test_app.get('/subapi/hello')
-    assert response.status_code == 200
-    assert response.json() == {'hello': 'world'}
+    expected_json = {'hello': 'world'}
+    assert_response_code_and_json(response, 200, expected_json)
